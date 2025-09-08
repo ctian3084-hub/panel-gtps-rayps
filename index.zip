@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTPS Panel CRPS</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #eee; text-align: center; padding: 20px; }
+    h1 { background: linear-gradient(90deg, red, yellow, green, cyan, blue, violet); -webkit-background-clip: text; color: transparent; font-size: 2em; }
+    .status { margin: 20px; padding: 20px; border-radius: 12px; background: #222; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+    button { margin: 5px; padding: 10px 20px; border: none; border-radius: 8px; background: #4caf50; color: white; cursor: pointer; }
+    button.stop { background: #f44336; }
+    #log { margin-top: 20px; padding: 10px; background: #000; color: #0f0; text-align: left; height: 150px; overflow-y: auto; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>CRPS GTPS Panel</h1>
+  <div class="status">
+    <p><b>Status:</b> <span id="serverStatus">Offline</span></p>
+    <button onclick="startServer()">Start Server</button>
+    <button class="stop" onclick="stopServer()">Stop Server</button>
+  </div>
+  <div id="log"></div>
+
+  <script>
+    function log(msg) {
+      let logBox = document.getElementById("log");
+      logBox.innerHTML += msg + "<br>";
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+    function startServer() {
+      document.getElementById("serverStatus").innerText = "Online";
+      log("Server started...");
+    }
+    function stopServer() {
+      document.getElementById("serverStatus").innerText = "Offline";
+      log("Server stopped.");
+    }
+  </script>
+</body>
+</html>
